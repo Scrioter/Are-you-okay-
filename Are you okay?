@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Positive Message Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    #game-container {
+      display: none;
+    }
+
+    #message {
+      margin-bottom: 20px;
+    }
+
+    #card {
+      display: none;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="start-container">
+    <h1>Do you have problems?</h1>
+    <button onclick="showMessage('No')">No</button>
+    <button onclick="showCard()">Yes</button>
+  </div>
+
+  <div id="game-container">
+    <div id="message"></div>
+    <div id="card">
+      <img src="teddybear.jpg" alt="Teddy Bear with Flower">
+      <button onclick="playCongratulations()">Open</button>
+    </div>
+  </div>
+
+  <audio id="audio" src="congratulations.mp3"></audio>
+
+  <script>
+    function showMessage(answer) {
+      if (answer === 'No') {
+        document.getElementById('start-container').style.display = 'none';
+        document.getElementById('game-container').style.display = 'block';
+        document.getElementById('message').innerHTML = 'Then why do you have to worry?';
+      }
+    }
+
+    function showCard() {
+      document.getElementById('start-container').style.display = 'none';
+      document.getElementById('game-container').style.display = 'block';
+      document.getElementById('card').style.display = 'block';
+    }
+
+    function playCongratulations() {
+      var audio = document.getElementById('audio');
+      audio.play();
+      document.getElementById('message').innerHTML = "I know things might seem challenging right now, but I want you to remember that challenges are temporary. Life has a way of working itself out, and even in the midst of difficulties, there's a strength within you that can overcome. I believe in your resilience and the ability to navigate through tough times.<br><br>It's okay to feel overwhelmed, but don't forget the countless times you've overcome obstacles in the past. This, too, shall pass. Reach out for support when you need it, and take things one step at a time. You're not alone, and together, we can get through anything. Remember, the darkest nights often lead to the brightest mornings.";
+      document.getElementById('card').innerHTML = '<img src="teddybear.jpg" alt="Teddy Bear with Flower">';
+    }
+  </script>
+</body>
+</html>
